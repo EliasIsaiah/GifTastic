@@ -10,34 +10,53 @@ $(document).ready(function () {
     let gifLimit = 5;
 
     function buildDefaultDOM() {
-        topics.forEach(starterButton => {
+        topics.forEach(defaultButton => {
             let newButton = $("<div>")
-                .addClass("btn btn-primary")
-                .attr("data-value", starterButton)
-                .text(starterButton)
+                .addClass("btn btn-primary m-1 gifButton")
+                .attr("data-value", defaultButton)
+                .text(defaultButton)
                 .on("click", buttonClickQuery);
 
             $("div.buttonsDiv").append(newButton);
         })
     }
 
+    //comment
+
 
     function buttonClickQuery() {
-        console.log("nothing here yet!");
-        _this = $(this);
-        console.log(_this);
         let queryAdd = encodeURIComponent($(this).attr("data-value"));
-        let newQueryURL = queryURL + "&q=" + queryAdd;
-        console.log(newQueryURL);
+        let newQueryURL = queryURL + "&q=" + queryAdd + "&limit=" + gifLimit;
+        
+        buildGifsDOM(newQueryURL);
     }
 
-    function testGet(route) {
-        return $.get(route).then(function (apiData) {
-            giphyJSON = apiData;
+    function buildGifsDOM(url) {
+        $.get(url).then(gifObject => {
+            gifObject.data.forEach(element => {
+                // console.log(element.images.downsized_still.url);
+                $newImg = $("<img>")
+                .addClass("gifImg")
+                .attr("src", element.images.downsized.url)
+                .attr("data-animatedUrl", element.images.downsized.url)
+                .on("hover", gifHover);
+                $("div.gifs").prepend($newImg);
+            })            
         })
     }
 
-    testGet(queryURL);
+    function gifHover() {        
+        $(this).attr("src", $(this).attr("data-animatedUrl"));
+    }
+
+
+    function getGifObject(route) {
+        $.get(route).then(function (apiData) {
+            console.log(apiData);
+            return apiData.data;
+        })
+    }
+
     buildDefaultDOM();
 
 });
