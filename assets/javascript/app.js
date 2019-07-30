@@ -27,7 +27,7 @@ $(document).ready(function () {
     function buttonClickQuery() {
         let queryAdd = encodeURIComponent($(this).attr("data-value"));
         let newQueryURL = queryURL + "&q=" + queryAdd + "&limit=" + gifLimit;
-        
+
         buildGifsDOM(newQueryURL);
     }
 
@@ -36,18 +36,34 @@ $(document).ready(function () {
             gifObject.data.forEach(element => {
                 // console.log(element.images.downsized_still.url);
                 $newImg = $("<img>")
-                .addClass("gifImg")
-                .attr("src", element.images.downsized.url)
-                .attr("data-animatedUrl", element.images.downsized.url)
-                .on("hover", gifHover);
+                    .addClass("gifImg")
+                    .attr("src", element.images.downsized_still.url)
+                    .attr("data-animatedUrl", element.images.downsized.url)
+                    .attr("data-stillUrl", element.images.downsized_still.url)
+                    .on("mouseenter", function () {
+                        $(this).attr("src", $(this).attr("data-animatedUrl"));
+                    })
+                    .on("mouseleave", function () {
+                        $(this).attr("src", $(this).attr("data-stillUrl"));
+
+                    })
+                    .css({
+                        "max-width": "100%",
+                        "margin": ".2rem",
+                    });
                 $("div.gifs").prepend($newImg);
-            })            
+            })
         })
     }
 
-    function gifHover() {        
-        $(this).attr("src", $(this).attr("data-animatedUrl"));
-    }
+    // function gifHover() {
+    //     $(this).attr("src", $(this).attr("data-animatedUrl"));
+    // }
+
+    // function stopGifHover() {
+
+    //     $(this).attr("src", $(this).attr("data-stillUrl"));
+    // }
 
 
     function getGifObject(route) {
