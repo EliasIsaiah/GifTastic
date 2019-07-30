@@ -21,9 +21,6 @@ $(document).ready(function () {
         })
     }
 
-    //comment
-
-
     function buttonClickQuery() {
         let queryAdd = encodeURIComponent($(this).attr("data-value"));
         let newQueryURL = queryURL + "&q=" + queryAdd + "&limit=" + gifLimit;
@@ -34,7 +31,6 @@ $(document).ready(function () {
     function buildGifsDOM(url) {
         $.get(url).then(gifObject => {
             gifObject.data.forEach(element => {
-                // console.log(element.images.downsized_still.url);
                 $newImg = $("<img>")
                     .addClass("gifImg")
                     .attr("src", element.images.downsized_still.url)
@@ -53,23 +49,6 @@ $(document).ready(function () {
                     });
                 $("div.gifs").prepend($newImg);
             })
-        })
-    }
-
-    // function gifHover() {
-    //     $(this).attr("src", $(this).attr("data-animatedUrl"));
-    // }
-
-    // function stopGifHover() {
-
-    //     $(this).attr("src", $(this).attr("data-stillUrl"));
-    // }
-
-
-    function getGifObject(route) {
-        $.get(route).then(function (apiData) {
-            console.log(apiData);
-            return apiData.data;
         })
     }
 
