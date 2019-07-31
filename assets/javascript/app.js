@@ -21,9 +21,6 @@ $(document).ready(function () {
         })
     }
 
-    //comment
-
-
     function buttonClickQuery() {
         let queryAdd = encodeURIComponent($(this).attr("data-value"));
         let newQueryURL = queryURL + "&q=" + queryAdd + "&limit=" + gifLimit;
