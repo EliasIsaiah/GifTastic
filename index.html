@@ -15,18 +15,24 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col">
                 <div class="buttonsDiv"></div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="userInput"></div>
-                </div>
+        </div>
+        <div class="col flex-grow-1 my-2">
+            <form class="form-inline">
+                <input class="userInput form-control form-control-lg" type="text" placeholder="Add a search string">
+                <button type="button" class="btn btn-outline-primary userInputSubmit">Add</button>
+            </form>
+        </div>
+        <!-- <div class="row">
+            <div class="col">
+                <div class="userInput"></div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="gifs"></div>
-                </div>
+        </div> -->
+        <div class="row">
+            <div class="col-12">
+                <div class="gifs d-flex flex-wrap"></div>
             </div>
         </div>
     </div>
