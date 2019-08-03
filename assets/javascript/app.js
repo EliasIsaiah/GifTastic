@@ -8,7 +8,7 @@ $(document).ready(function () {
     let queryURL = `https://api.giphy.com/v1/gifs/search?&api_key=${apiKey}`;
     let ratings = ["g", "pg", "pg-13", "r"];
     let selectedRating = "";
-    let gifLimit = 5;
+    let gifLimit = 10;
 
     function buildDefaultButtonsDOM() {
         console.log("entered buildButtonDOM");
