@@ -83,7 +83,6 @@ $(document).ready(function () {
         }
     })
 
-    // $("input.userInput").on("")
 
     $("button.userInputSubmit").on("click", (event) => {
         event.preventDefault();
