@@ -83,7 +83,6 @@ $(document).ready(function () {
         }
     })
 
-
     $("button.userInputSubmit").on("click", (event) => {
         event.preventDefault();
         buildNewButtonDOM($("input.userInput").val());
