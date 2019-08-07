@@ -11,7 +11,6 @@ $(document).ready(function () {
     let gifLimit = 10;
 
     function buildDefaultButtonsDOM() {
-        console.log("entered buildButtonDOM");
         topics.forEach(defaultButton => {
             let newButton = $("<div>")
                 .addClass("btn btn-primary m-1 gifButton")
@@ -22,8 +21,6 @@ $(document).ready(function () {
             $("div.buttonsDiv").append(newButton);
         })
     }
-
-    //overloaded to accept userInput parameter
 
     function buildNewButtonDOM(userInput) {
         let newButton = $("<div>")
@@ -86,7 +83,6 @@ $(document).ready(function () {
     $("button.userInputSubmit").on("click", (event) => {
         event.preventDefault();
         buildNewButtonDOM($("input.userInput").val());
-        // console.log(`user input: ${$("input.userInput").val()}`)
     });
 
     buildDefaultButtonsDOM();
